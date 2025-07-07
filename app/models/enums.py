@@ -9,3 +9,11 @@ class Estado(str, Enum):
     ACTIVO = "activo"
     INACTIVO = "inactivo"
     PENDIENTE = "pendiente"
+    
+class EstadoCita(str, Enum):
+    PROGRAMADA = "programada"
+    CONFIRMADA = "confirmada"
+    EN_CURSO = "en_curso"
+    COMPLETADA = "completada"
+    CANCELADA = "cancelada"
+    NO_ASISTIO = "no_asistio"
