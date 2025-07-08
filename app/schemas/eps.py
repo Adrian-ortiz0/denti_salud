@@ -1,13 +1,18 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from typing import Optional
 from app.models.enums import Estado
 
-class EpsCreate(BaseModel):
-    nombre: str
+class EpsBase(BaseModel):
+    nombre: str = Field(..., max_length=100, description="Nombre de la EPS")
 
-class EpsRead(BaseModel):
+class EpsCreate(EpsBase):
+    pass
+
+class EpsUpdate(BaseModel):
+    nombre: Optional[str] = Field(None, max_length=100, description="Nuevo nombre de la EPS")
+    
+class EpsResponse(EpsBase):
     id: int
-    nombre: str
-    estado: Estado
     
     class Config:
-        orm_mode = True
+        from_attributes = True
